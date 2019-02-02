@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weekend Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+<script>
+    // Create a "fill-in-the-blank" quiz game
+
+    //Ask user's name
+    var user = prompt("Please enter your name", user);
+
+    //Ask user series of questions that are stored in an array, refers user by name
+
+    var q1 = "What is 1 + 1 ?";
+    var ans1 = "2";
+    var q2 = "What language is this program written in?";
+    var ans2 = "JavaScript";
+    var q3 = "How many letters are in your name, "+user+"?";
+    var ans3 = user.length;
+
+    var questions = [q1,q2,q3];
+    var answers = [ans1,ans2,ans3];
+
+    var responses = [];
+    var numCorrect = 0;
+
+    //When user quit, display statistics of the game in console (# of questions answered and # of questions correct)
+    var end = function(){
+        console.log(user,"answered", responses.length," questions. \n", numCorrect+"/"+responses.length,"are correct!");
+        for(let i = 0; i < responses.length; i++){
+            //compare user's answer to what you expected
+            console.log(" Questions",(i+1),": ",questions[i]);
+            console.log("  Your answer:", responses[i]);
+            console.log("  Correct answer:", answers[i]);
+        };
+    }
+    //use prompt() to get input from user
+    for(let i = 0; i < questions.length; i++){
+        userRes = responses[i];
+        userRes = prompt(questions[i]+" \n\nClick 'Enter 'Q' or click 'Cancel' to quit");
+        //User can quit when enters "Q" or click "Cancel"
+        if(userRes == null || userRes == "Q"){
+            break;
+        }
+        responses[i] = userRes;
+        if(responses[i] == answers[i]){
+            numCorrect++;
+        }
+    }
+    end();
+
+</script>
+</body>
+</html>
